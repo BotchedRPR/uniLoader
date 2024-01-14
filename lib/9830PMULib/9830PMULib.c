@@ -8,6 +8,7 @@
 // SWRESET Registers
 #define SWRESET         0x3A00
 #define SWRESET_TRIGGER (1 << 1)
+#define RST_STAT	(0x0404)
 
 // PS_HOLD Registers
 #define PS_HOLD_CONTROL 0x30C
@@ -62,6 +63,7 @@ return 1;
 
 int warmReset()
 {
+    pmuWrite(PMU_BASE_ADDR, RST_STAT, 0);
     pmuWrite(PMU_BASE_ADDR, SWRESET, SWRESET_TRIGGER);
 }
 
@@ -74,7 +76,7 @@ int powerOff()
 int rebootToMode()
 {
     // TODO
-writel(REBOOT_MODE_RECOVERY, PMU_BASE_ADDR + PMU_SYSIP_DAT0);
+writel(REBOOT_MODE_FASTBOOT, PMU_BASE_ADDR + PMU_SYSIP_DAT0);
 warmReset();
-return 0;
+return 1;
 }

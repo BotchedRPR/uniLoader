@@ -19,7 +19,7 @@ int readl(void* address) {
     volatile unsigned int* ptr = (volatile unsigned int*)address;
 
     // return the value of the memory location
-    return *ptr;
+    return ptr;
 }
 
 
