@@ -26,6 +26,13 @@ menu "Building options"
 		help
 		  Path to the kernel, which is going to get embedded to uniLoader
 
+	config CUSTBIN_PATH
+                string "Path to a custom binary"
+                depends on EMBED_LINUX
+                default blob/customBinaries/EDK2FV
+                help
+                  Path to a custom binary, which is going to get embedded to uniLoader
+
 	config DT_PATH
 		string "Path to device tree image"
 		depends on EMBED_LINUX

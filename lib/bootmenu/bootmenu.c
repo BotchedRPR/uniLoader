@@ -8,7 +8,7 @@
 
 #define ENTRY_OFFSET 20
 
-#define MAX_ENTRIES 2
+#define MAX_ENTRIES 3
 #define ENTRIES (centerH + 3*20)
 
 void drawText()
@@ -16,7 +16,8 @@ void drawText()
     int centerH = CONFIG_FRAMEBUFFER_WIDTH / 2;
 
     draw_text(CONFIG_FRAMEBUFFER_BASE, "Boot kernel in blob", 5, centerH + (28 / 2), CONFIG_FRAMEBUFFER_WIDTH, CONFIG_FRAMEBUFFER_STRIDE);
-    draw_text(CONFIG_FRAMEBUFFER_BASE, "Reset", 5, centerH + (68 / 2), CONFIG_FRAMEBUFFER_WIDTH, CONFIG_FRAMEBUFFER_STRIDE);
+    draw_text(CONFIG_FRAMEBUFFER_BASE, "Boot EDK2", 5, centerH + (68 / 2), CONFIG_FRAMEBUFFER_WIDTH, CONFIG_FRAMEBUFFER_STRIDE);
+    draw_text(CONFIG_FRAMEBUFFER_BASE, "Reset", 5, centerH + (108 / 2), CONFIG_FRAMEBUFFER_WIDTH, CONFIG_FRAMEBUFFER_STRIDE);
 }
 
 int lastSel = 0;
