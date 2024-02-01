@@ -54,7 +54,7 @@ int startListener()
             case VOLUMEUP_BUTTON:
                 if(selection-1 < 1)
                 {
-		    selection++;
+		    selection = MAX_ENTRIES;
                     //printk("selection down");
                     highlightSelection(selection);
                     break;
@@ -67,7 +67,7 @@ int startListener()
             case VOLUMEDOWN_BUTTON:
                 if(selection+1 > MAX_ENTRIES)
                 {
-                    selection--;
+                    selection = 1;
                     //printk("selection up");
                     highlightSelection(selection);
                     break;
