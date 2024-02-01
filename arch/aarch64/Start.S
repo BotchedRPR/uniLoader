@@ -3,8 +3,9 @@
  * Copyright (c) 2022, Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>
  */
 
-    adr	x0, dtb
-    adr	x1, kernel
+    adrp	x0, dtb
+    adrp	x1, kernel
+    adrp	x2, kernel2
     b main
 
 .global load_kernel

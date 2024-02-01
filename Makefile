@@ -105,6 +105,7 @@ export srctree objtree VPATH
 
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 KERNEL_PATH	?= $(CONFIG_KERNEL_PATH:"%"=%)
+CUSTBIN_PATH    ?= $(CONFIG_CUSTBIN_PATH:"%"=%)
 DT_PATH	?= $(CONFIG_DT_PATH:"%"=%)
 
 KCONFIG_CONFIG	?= .config
@@ -363,7 +364,7 @@ quiet_cmd_uniLoader = LD      $@.o
       cmd_uniLoader = $(LD) $(main-y) $(uniLoader-libs) -o $@.o --script=arch/$(ARCH)/linker.lds
 
 arch/$(ARCH)/linker.lds: arch/$(ARCH)/linker.lds.S $(KERNEL_PATH)
-	$(CPP) $< -DKERNEL_PATH=$(KERNEL_PATH) -DDTB_PATH=$(DT_PATH) -P -o $@
+	$(CPP) $< -DKERNEL_PATH=$(KERNEL_PATH) -DCUSTBIN_PATH=$(CUSTBIN_PATH) -DDTB_PATH=$(DT_PATH) -P -o $@
 
 uniLoader: $(uniLoader-all)
 	$(call if_changed,uniLoader)

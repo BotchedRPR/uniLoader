@@ -8,9 +8,18 @@
 #include <bootmenu/bootmenu.h>
 #include <keys.h>
 
-void memcpy(void *dest, void *src, int size);
+//void memcpy(void *dest, void *src, int size);
 
 int warmReset();
+
+void memcpy(void *dest, void *src, int size)
+{
+	unsigned __int128 *src2 = src;
+	unsigned __int128 *dest2 = dest;
+
+	for (int i=0; i<size/16; i++)
+		dest2[i] = src2[i];
+}
 
 // Function to write two strings using printk (HACK)
 void write_two_strings(char* str1, char* str2) {
@@ -35,8 +44,7 @@ void write_two_strings(char* str1, char* str2) {
     printk(combined_str);
 }
 
-
-void main(void* dt, void* kernel) {
+void main(void* dt, void* kernel, void* kernel2) {
 	/* Initialize SoC and Board specific peripherals/quirks */
 
 	/* TODO: Find a better way to make this more universal (since devices like arm64 Samsung Galaxies enable FB after soc_init) */
@@ -63,6 +71,11 @@ void main(void* dt, void* kernel) {
         load_kernel(dt, 0, 0, 0, (void*)CONFIG_PAYLOAD_ENTRY);
     }
     else if(sel == 2)
+    {
+        memcpy((void*)CONFIG_PAYLOAD_ENTRY, kernel2, (unsigned long) &kernel2_size);
+	load_kernel(dt, 0, 0, 0, (void*)CONFIG_PAYLOAD_ENTRY);
+    }
+    else if(sel == 3)
     {
         warmReset();
     }
