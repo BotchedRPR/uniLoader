@@ -37,10 +37,11 @@ void printk(char *text) {
 }
 
 /* Define our own 128 bit memcpy */
-void memcpy(void *dest, void *src, int size)
+/*void memcpy(void *dest, void *src, int size)
 {
 	unsigned __int128 *src2 = src;
 	unsigned __int128 *dest2 = dest;
 	for (int i=0; i<size/16; i++)
 		dest2[i] = src2[i];
 }
+*/
