@@ -22,7 +22,7 @@ void memcpy(void *dest, void *src, int size)
 }
 
 // Function to write two strings using printk (HACK)
-/*void write_two_strings(char* str1, char* str2) {
+void write_two_strings(char* str1, char* str2) {
     // Concatenate the two strings
     char combined_str[100];  // Adjust the size based on your needs
     int i, j;
@@ -42,7 +42,7 @@ void memcpy(void *dest, void *src, int size)
 
     // Call printk with the combined string
     printk(combined_str);
-}*/
+}
 
 void main(void* dt, void* kernel, void* kernel2) {
 	/* Initialize SoC and Board specific peripherals/quirks */
@@ -52,7 +52,7 @@ void main(void* dt, void* kernel, void* kernel2) {
 	clean_fb((char*)CONFIG_FRAMEBUFFER_BASE, CONFIG_FRAMEBUFFER_WIDTH, CONFIG_FRAMEBUFFER_HEIGHT, CONFIG_FRAMEBUFFER_STRIDE);
 #endif
 
-//	write_two_strings("uniLoader ", VERSION);
+	write_two_strings("uniLoader ", VERSION);
 
 	soc_init();
 	printk("soc_init() passed!");
@@ -67,7 +67,6 @@ void main(void* dt, void* kernel, void* kernel2) {
 
     if(sel == 1)
     {
-	printk("we should be booting here");
         memcpy((void*)CONFIG_PAYLOAD_ENTRY, kernel, (unsigned long) &kernel_size);
         load_kernel(dt, 0, 0, 0, (void*)CONFIG_PAYLOAD_ENTRY);
     }
