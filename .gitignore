@@ -21,3 +21,4 @@ blob/Image
 blob/dtb
 drivers/*.a
 blob/ramdisk
+docs/_build
