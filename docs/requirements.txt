@@ -1,1 +1,2 @@
 sphinx-prompt==1.9.0
+sphinx-rtd-theme==3.0.1
