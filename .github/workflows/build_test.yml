@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Build all devices
 
 on:
   push:
@@ -14,14 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: configure
-      run: ./configure
+    - name: Install build dependencies
+      run: sudo apt install -y arm-linux-gnu aarch64-linux-gnu
 
-    - name: Install dependencies
-      run: make
-
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
+    - name: Run build_test.sh
+      run: .github/workflows/build_test.sh
