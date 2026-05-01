@@ -4,6 +4,7 @@ lib-$(CONFIG_GOOGLE_TAIMEN) += google/board-taimen.o
 lib-$(CONFIG_HUAWEI_AGASSI2) += huawei/board-agassi2.o
 lib-$(CONFIG_INFINIX_X6710) += infinix/board-x6710.o
 lib-$(CONFIG_ITEL_P682LPN) += itel/board-p682lpn.o
+lib-$(CONFIG_LENOVO_TB373FU) += lenovo/board-tb373fu.o
 lib-$(CONFIG_NOKIA_ESSENTIAL) += nokia/board-essential.o
 lib-$(CONFIG_NOTHING_TETRIS) += nothing/board-tetris.o
 lib-$(CONFIG_QEMU_BOARD_VIRT) += qemu/board-virt.o

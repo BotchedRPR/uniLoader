@@ -42,6 +42,13 @@ menu "Device Support"
 		help
 		  Say Y if you want to include support for itel Vision 3 Plus
 
+	config LENOVO_TB373FU
+		bool "Support for Lenovo Idea Tab Pro"
+		default n
+		depends on MT6897
+		help
+		  Say Y if you want to include support for the Lenovo Idea Tab Pro
+
 	config NOKIA_ESSENTIAL
 		bool "Support for Nokia 3"
 		default n
